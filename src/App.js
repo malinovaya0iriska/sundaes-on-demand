@@ -1,6 +1,6 @@
 import logo from './logo.svg';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import { SummaryForm } from './pages/summary/SummaryForm';
 
 function App() {
   return (
@@ -18,6 +18,7 @@ function App() {
         >
           Learn React
         </a>
+        <SummaryForm />
       </header>
     </div>
   );
