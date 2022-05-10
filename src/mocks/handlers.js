@@ -1,11 +1,11 @@
-import { rest } from 'msv';
+import { rest } from 'msw';
 import { mockAPI } from './api';
 
 export const handlers = [
-  rest.get(mockAPI, (req, res, ctx) =>
+  rest.get(`${mockAPI}/scoops`, (req, res, ctx) =>
     res(
       ctx.json([
-        { name: 'Cholate', imagePath: '/images/chocolate.png' },
+        { name: 'Chocolate', imagePath: '/images/chocolate.png' },
         { name: 'Vanilla', imagePath: '/images/vanilla.png' },
       ])
     )
