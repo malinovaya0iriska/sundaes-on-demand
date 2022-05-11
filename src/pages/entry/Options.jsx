@@ -4,9 +4,11 @@ import Row from 'react-bootstrap/Row';
 import { ScoopOption } from './ScoopOption';
 import { ToppingOption } from './ToppingOption';
 import { ENDPOINTS, mockURL } from './../../mocks/api';
+import { AlertBanner } from '../common/AlertBanner';
 
 export const Options = ({ optionType }) => {
   const [items, setItems] = useState([]);
+  const [error, setError] = useState(false);
 
   const ItemComponent =
     optionType === ENDPOINTS.SCOOPS ? ScoopOption : ToppingOption;
@@ -19,10 +21,13 @@ export const Options = ({ optionType }) => {
     axios
       .get(`${mockURL}${optionType}`)
       .then((response) => setItems(response.data))
-      .catch((error) => {
-        // TODO: handle error response
+      .catch(() => {
+        setError(true);
       });
   }, [optionType]);
 
+  if (error) {
+    return <AlertBanner />;
+  }
   return <Row>{optionItems}</Row>;
 };
