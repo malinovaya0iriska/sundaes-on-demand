@@ -29,7 +29,6 @@ export const Options = ({ optionType }) => {
     />
   ));
 
-  console.log(orderDetails.totals);
   useEffect(() => {
     axios
       .get(`${mockURL}${optionType}`)
@@ -42,6 +41,7 @@ export const Options = ({ optionType }) => {
   if (error) {
     return <AlertBanner />;
   }
+  console.log(optionType);
   return (
     <>
       <h2>{title}</h2>
