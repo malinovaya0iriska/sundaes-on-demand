@@ -41,11 +41,11 @@ export const Options = ({ optionType }) => {
   if (error) {
     return <AlertBanner />;
   }
-  console.log(optionType);
+
   return (
     <>
       <h2>{title}</h2>
-      <p>{pricePerItem[optionType]} each</p>
+      <p>{pricePerItem[optionType.slice(1)]}$ each</p>
       <p>
         {title} total: {orderDetails?.totals[optionType.slice(1)]}
       </p>
