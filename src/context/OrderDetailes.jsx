@@ -58,7 +58,36 @@ export const OrderDetailsProvider = (props) => {
 
       setOptionCounts(newOptionsCounts);
     };
-    return [{ ...optionCounts, totals }, updateOptionCount];
+
+    // alternate updateItemCount that DOES NOT mutate state. Reference Q&A:
+    // https://www.udemy.com/course/react-testing-library/learn/#questions/14446658/
+    // const updateItemCount = (itemName, newItemCount, optionType) => {
+    //   // get option Map and make a copy
+    //   const { [optionType]: optionMap } = optionCounts;
+    //   const newOptionMap = new Map(optionMap);
+
+    //   // update the copied Map
+    //   newOptionMap.set(itemName, parseInt(newItemCount));
+
+    //   // create new object with the old optionCounts plus new map
+    //   const newOptionCounts = { ...optionCounts };
+    //   newOptionCounts[optionType] = newOptionMap;
+
+    //   // update state
+    //   setOptionCounts(newOptionCounts);
+    // }
+
+    const resetOrder = () => {
+      setOptionCounts({
+        scoops: new Map(),
+        toppings: new Map(),
+      });
+    };
+
+    // getter: object containing option counts for scoops and toppings, subtotals and totals
+    // setter: updateOptionCount
+
+    return [{ ...optionCounts, totals }, updateOptionCount, resetOrder];
   }, [optionCounts, totals]);
 
   return <OrderDetails.Provider value={value} {...props} />;

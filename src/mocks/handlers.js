@@ -19,4 +19,7 @@ export const handlers = [
       ])
     )
   ),
+  rest.post(`${mockURL}${ENDPOINTS.ORDER}`, (req, res, ctx) =>
+    res(ctx.json({ orderNumber: 123455676 }))
+  ),
 ];
