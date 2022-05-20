@@ -23,4 +23,4 @@ test('handle error for scoops and toppings routes', async () => {
   });
 });
 
-test.skip('test that is skipped', () => {});
+// test.skip('test that is skipped', () => {});

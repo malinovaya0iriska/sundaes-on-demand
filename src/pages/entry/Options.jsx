@@ -7,6 +7,7 @@ import { ENDPOINTS, mockURL } from './../../mocks/api';
 import { AlertBanner } from '../common/AlertBanner';
 import { pricePerItem } from './../../constants';
 import { useOrderDetails } from '../../context/OrderDetailes';
+import { formatCurrency } from '../../utilities';
 
 export const Options = ({ optionType }) => {
   const [items, setItems] = useState([]);
@@ -45,7 +46,7 @@ export const Options = ({ optionType }) => {
   return (
     <>
       <h2>{title}</h2>
-      <p>{pricePerItem[optionType.slice(1)]}$ each</p>
+      <p>{formatCurrency(pricePerItem[optionType.slice(1)])} each</p>
       <p>
         {title} total: {orderDetails?.totals[optionType.slice(1)]}
       </p>
