@@ -6,13 +6,19 @@ import { ORDER_PHASE } from '../../constants';
 
 export const OrderEntry = ({ setOrderPhase }) => {
   const [orderDetails] = useOrderDetails();
+  const isDisabled = orderDetails.totals.scoops === '$0.00';
 
   return (
     <>
       <Options optionType={ENDPOINTS.SCOOPS} />
       <Options optionType={ENDPOINTS.TOPPINGS} />
       <h2>Grand total: {orderDetails.totals.grandTotal}</h2>
-      <Button onClick={() => setOrderPhase(ORDER_PHASE.REVIEW)}> Order!</Button>
+      <Button
+        onClick={() => setOrderPhase(ORDER_PHASE.REVIEW)}
+        disabled={isDisabled}
+      >
+        Order!
+      </Button>
     </>
   );
 };
